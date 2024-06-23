@@ -1,0 +1,17 @@
+name: Linux Build
+
+on: push
+
+jobs:
+  build:
+    name: Build on Ubuntu
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        ref: e45d91de0224e17a6bf7c971d8f165090b3c07a6
+
+    - name: Build C Code
+      run: |
+        make modules -j$(nproc)
